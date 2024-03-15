@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidea Chat</title>
+    <style>
+        #mostraIframeImage {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            width: 100px; /* Imposta la larghezza desiderata */
+            height: 40px; /* Imposta l'altezza desiderata */
+            cursor: pointer; /* Mostra il cursore come un puntatore quando passi sopra l'immagine */
+            z-index: 9999; /* Assicura che l'immagine sia sopra tutti gli altri elementi */
+            background-image: url('sirio_col.png'); /* Imposta l'immagine di sfondo */
+            background-size: contain; /* Adatta l'immagine per coprire completamente il contenitore */
+            background-repeat: no-repeat; /* Evita la ripetizione dell'immagine */
+            background-position: center; /* Centra l'immagine all'interno del contenitore */
+            overflow: hidden; /* Nasconde il contenuto testuale eccedente */
+            text-indent: -9999px; /* Posiziona il testo al di fuori dell'area visibile */
+        }
+
+        #iframeContainer {
+            display: none; /* Nascondi l'iframe all'inizio */
+            position: fixed;
+			top: 93%;
+            left: 71%;
+			right: 200%;
+			bottom: 100%;
+            transform: translate(-5%, -50%);
+            width: 300px; /* Imposta la larghezza iniziale */
+            height: 200px; /* Imposta l'altezza iniziale */
+            z-index: 9998; /* Assicura che l'iframe sia sopra tutti gli altri elementi tranne l'immagine */
+        }
+
+        #iframeContainer.expanded {
+			display:  block;
+			position: fixed;
+            width: 200%; /* Imposta la larghezza espansa */
+            height: 200%; /* Imposta l'altezza espansa */
+            max-width: 200px; /* Imposta la larghezza massima */
+            max-height: 800px; /* Imposta l'altezza massima */
+        }
+		
+		h1 {
+    text-align: center; /* Centra il testo del titolo */
+    font-family: 'Work Sans', normal; /* Modifica il tipo di carattere */
+    color: #333; /* Cambia il colore del testo */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Aggiungi un'ombra al testo */
+    margin-top: 50px; /* Aggiungi un margine superiore per lo spazio */
+    
+}
+    </style>
+</head>
+<body>
+
+	<h1> <img src = 'sidea_logo2.png' width="70" height="70"> </h1>
+	
+    <div id="mostraIframeImage" onclick="toggleIframe()">Mostra Iframe</div>
+    
+    <div id="iframeContainer">
+        <iframe src='https://app.zipchat.ai/iframe/?widget_token=XOHjgEL2QVvpd28hn2vD' width='200%,min-width= 900px' style='height: 50%; min-height: 300px;' frameborder='0'></iframe>
+    </div>
+
+    <script>
+        var isIframeVisible = false;
+
+        function toggleIframe() {
+            var iframeContainer = document.getElementById("iframeContainer");
+
+            if (isIframeVisible) {
+                iframeContainer.classList.remove("expanded"); // Rimuovi la classe "expanded"
+            } else {
+                // var iframeContent = document.getElementById("iframeContent");
+                // iframeContent.src = 'https://app.zipchat.ai/iframe/?widget_token=XOHjgEL2QVvpd28hn2vD'; // Inserisci l'URL desiderato
+                iframeContainer.classList.add("expanded"); // Aggiungi la classe "expanded"
+            }
+
+            isIframeVisible = !isIframeVisible;
+        }
+    </script>
+</body>
+</html>
